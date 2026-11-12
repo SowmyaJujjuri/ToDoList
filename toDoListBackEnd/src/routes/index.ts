@@ -1,26 +1,14 @@
 import { Router } from 'express';
 import { isCreateTodoBody, isUpdateTodoBody } from '../types/CreateToDo.js';
-import { getFirestore } from 'firebase-admin/firestore';
-import { initializeApp, cert } from 'firebase-admin/app';
 import { randomUUID } from 'node:crypto';
+import { getFirestoreDb } from '../config/firestore.js';
 
-// Import your downloaded service account JSON file
-import serviceAccount from '../service-account.json' with { type: 'json' };
-
-// Initialize the Firebase Admin App
-initializeApp({
-  credential: cert({
-    projectId: serviceAccount.project_id,
-    clientEmail: serviceAccount.client_email,
-    privateKey: serviceAccount.private_key,
-  }),
-});
 
 
 
 // Register feature routers here when application implementation begins.
 export const apiRouter = Router();
-export const db = getFirestore();
+export const db = getFirestoreDb();
 
 apiRouter.post('/toDo', async (_req, res) => {
   console.log("recieved todo create/update request");
