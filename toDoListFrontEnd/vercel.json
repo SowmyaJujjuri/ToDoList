@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://todolist-backend-xs5z.onrender.com"
+      "destination": "https://todolist-backend-xs5z.onrender.com/api/:path*"
     }
   ]
 }
